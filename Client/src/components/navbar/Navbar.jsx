@@ -1,7 +1,8 @@
 import { useState } from "react";
-
+import AuthModal from "@/components/auth/AuthModal";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedin, setisLoggedin] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -52,9 +53,13 @@ const Navbar = () => {
         <button className="border border-gray-600 hover:bg-gray-800 px-4 py-2 rounded-full text-sm font-medium transition">
           Contact Us
         </button>
-        <button className="bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 text-white px-4 py-2 rounded-full text-sm font-medium transition duration-300">
-          Book Appointment
-        </button>
+        {isLoggedin ? (
+          <button className="bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 text-white px-4 py-2 rounded-full text-sm font-medium transition duration-300">
+            Book Appointment
+          </button>
+        ) : (
+          <AuthModal />
+        )}
       </div>
 
       {/* Mobile Menu Toggle */}
@@ -100,12 +105,18 @@ const Navbar = () => {
           >
             Contact Us
           </button>
-          <button
-            onClick={closeMenu}
-            className="bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 text-white px-6 py-3 rounded-full text-sm font-medium transition duration-300"
-          >
-            Book Appointment
-          </button>
+          {isLoggedin ? (
+            <button
+              onClick={closeMenu}
+              className="bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 text-white px-6 py-3 rounded-full text-sm font-medium transition duration-300"
+            >
+              Book Appointment
+            </button>
+          ) : (
+            <div>
+              <AuthModal />
+            </div>
+          )}
         </div>
       )}
     </nav>
