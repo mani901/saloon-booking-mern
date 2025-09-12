@@ -16,7 +16,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 
 export default function AuthModal() {
-  // This state is ONLY for tab switching — does NOT control modal visibility
   const [activeTab, setActiveTab] = useState("login");
 
   return (
