@@ -8,7 +8,7 @@ export interface AuthRequest extends Request {
   user?: any;
 }
 
-// ✅ JWT authentication
+//  JWT authentication
 export const requireAuth = async (
   req: AuthRequest,
   res: Response,

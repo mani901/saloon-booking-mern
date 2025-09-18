@@ -29,7 +29,7 @@ export const register = asyncHandler(async (req, res) => {
   res.status(201).json({ success: true , message : "User Registered Successfully",token, user: { email: user.email, role: user.role } });
 });
 
-// ✅ Login
+
 export const login = asyncHandler(async (req: Request, res: Response) => {
   const data = loginSchema.parse(req.body);
 
@@ -47,10 +47,7 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
 
 
 
-/**
- * @desc Google OAuth Callback
- * This is called after passport authenticates user with Google
- */
+
 export const googleCallback = asyncHandler(async (req: Request, res: Response) => {
   const user = (req as any).user;
 
